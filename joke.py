@@ -19,14 +19,9 @@ class Joke_Gen:
 			and "edit".lower() not in 
 			submission.selftext.lower()}
 
-	def print(self):
+	def get_joke(self):
 		rand = random.randint(0, len(self.jokes) - 1)
 		title = list(self.jokes.keys())[rand]
 		text = list(self.jokes.values())[rand]
-		print("----------------------------------"
-			+ "---------------------------------")
-		print(title)
-		print("\n")
-		print(text)
-		print("----------------------------------"
-			+ "---------------------------------")
+		
+		return title, text
