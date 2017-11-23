@@ -34,7 +34,7 @@ class Window(QWidget):
         self.show()
 
     def set_picture(self, pic):
-        pixmap = QPixmap('dadjoke.png')
+        pixmap = QPixmap('bg.png')
         pic.setPixmap(pixmap)
 
     def new_click(self):
