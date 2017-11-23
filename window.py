@@ -10,6 +10,7 @@ class Window(QWidget):
 
     def __init__(self):
         super().__init__()
+        self.next_joke = "Short"
         self.setup()
 
     def setup(self):
@@ -25,57 +26,31 @@ class Window(QWidget):
         self.setWindowTitle('Joke Generator')
         self.cBox = QComboBox(self)
         self.cBox.move(130, 12)
-        
+        self.cBox.addItem("Short")
+        self.cBox.addItem("Medium")
+        self.cBox.addItem("Long")
         self.b.clicked.connect(self.new_click)
+        self.cBox.activated[str].connect(self.onActivated)
         self.show()
-        # self.show()
-        # radiobutton = QRadioButton("Brazil")
-        # radiobutton.setChecked(True)
-        # radiobutton.country = "Brazil"
-        # radiobutton.toggled.connect(self.on_radio_button_toggled)
-        # layout.addWidget(radiobutton, 0, 0)
 
-        # radiobutton = QRadioButton("Argentina")
-        # radiobutton.country = "Argentina"
-        # radiobutton.toggled.connect(self.on_radio_button_toggled)
-        # layout.addWidget(radiobutton, 0, 1)
-
-        # radiobutton = QRadioButton("Ecuador")
-        # radiobutton.country = "Ecuador"
-        # radiobutton.toggled.connect(self.on_radio_button_toggled)
-        # layout.addWidget(radiobutton, 0, 2)
-
-    # def on_radio_button_toggled(self):
-    #     radiobutton = self.sender()
-
-    #     if radiobutton.isChecked():
-    #         print("Selected country is %s" % (radiobutton.country))
-
-    #def init_ui(self):
-        # h_box = q.QHBoxLayout()
-        # h_box.addWidget(self.l)
-        # h_box.addWidget(self.pic)
-
-        # v_box = q.QVBoxLayout()
-        # v_box.addWidget(self.b1)
-        # v_box.addLayout(h_box)
-
-        
-        # self.setLayout(v_box)
-        
-        #self.set_picture()
-        
     def set_picture(self, pic):
         pixmap = QPixmap('dadjoke.png')
         pic.setPixmap(pixmap)
 
     def new_click(self):
-        rand = random.randint(0, len(jg.jokes) - 1)
-        title, old_text = jg.get_all(rand)
-        self.l.setText(title
-        # + "\n---------------------------------------------" + 
-        # "-------------------------------------------------"
-        + "\n\n" + old_text)
+        if (self.next_joke == "Short"):
+            rand = random.randint(0, len(jg.short) - 1)
+        elif (self.next_joke == "Medium"):
+            rand = random.randint(0, len(jg.medium) - 1)
+        elif (self.next_joke == "Long"):
+            rand = random.randint(0, len(jg.long) - 1)
+
+        title, old_text = jg.get_joke(rand, self.next_joke)
+        self.l.setText(title + "\n\n" + old_text)
+
+    def onActivated(self, text):
+        print(text)
+        self.next_joke = text
 
 app = QApplication(sys.argv)
 a_window = Window()
