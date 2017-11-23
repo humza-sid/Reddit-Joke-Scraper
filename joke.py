@@ -11,20 +11,20 @@ class Joke_Gen:
 				 user_agent = "humza's joke scraper")
 		
 		self.short = [submission for
-			submission in r.subreddit(sub).top(limit=250)
+			submission in r.subreddit(sub).top(limit=150)
 			if (len(submission.selftext) < 250)
 			and filter(submission.selftext.lower())]
-
+	
 		self.medium = [submission for
-			submission in r.subreddit(sub).top(limit=250)
+			submission in r.subreddit(sub).top(limit=200)
 			if (len(submission.selftext) > 250 and
-				len(submission.selftext) < 600)
+			len(submission.selftext) < 600)
 			and filter(submission.selftext.lower())]
-
+	
 		self.long = [submission for
-			submission in r.subreddit(sub).top(limit=250)
+			submission in r.subreddit(sub).top(limit=500)
 			if (len(submission.selftext) > 600 and
-				len(submission.selftext) < 1200)
+			len(submission.selftext) < 1200)
 			and filter(submission.selftext.lower())]
 
 	def get_joke(self, index, next_joke):

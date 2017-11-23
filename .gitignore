@@ -1,3 +1,6 @@
 .DS_Store
 __pycache__/
 config.py
+test.py
+Reddit-Joke-Scraper.iml
+.idea/

@@ -17,15 +17,15 @@ class Window(QWidget):
         self.pic = QLabel('', self)
         self.set_picture(self.pic)
         self.b = QPushButton('New Joke', self)
-        self.b.move(10, 10)
+        self.b.move(300, 10)
         self.l = QLabel('', self)
         self.l.move(20, 50)
         self.l.setWordWrap(True)
-        self.l.setGeometry(QRect(70, 80, 500, 400))
+        self.l.setGeometry(QRect(70, 50, 500, 500))
         self.setGeometry(400, 200, 800, 550)
         self.setWindowTitle('Joke Generator')
         self.cBox = QComboBox(self)
-        self.cBox.move(130, 12)
+        self.cBox.move(420, 12)
         self.cBox.addItem("Short")
         self.cBox.addItem("Medium")
         self.cBox.addItem("Long")
@@ -49,7 +49,6 @@ class Window(QWidget):
         self.l.setText(title + "\n\n" + old_text)
 
     def onActivated(self, text):
-        print(text)
         self.next_joke = text
 
 app = QApplication(sys.argv)
