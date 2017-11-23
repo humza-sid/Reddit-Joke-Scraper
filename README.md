@@ -2,4 +2,5 @@
 
 Searches through the top posts on /r/jokes subreddit and chooses a random joke.
 
-![Alt text](~/Reddit-Joke-Scraper/long_joke.png?raw=true "Optional Title")
+[Example of a long joke](long_joke.png)
+[Example of a short joke](short_joke.png)
